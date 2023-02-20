@@ -41,13 +41,6 @@ std::tuple<Eigen::SparseMatrix<float>,Eigen::SparseMatrix<float>> fill_A_b(CImg 
     matb.setZero();
 
     std::cout<<"Filling A and b with coefficients"<<std::endl;
-    /*
-    #pragma omp parallel for simd  \
-                collapse(2)\
-                schedule(simd:static,THREADS)
-    */
-
-
 
     for (int i=0; i!=Ix.height() ;++i){
         for (int j=0; j!=Ix.width() ;++j){
@@ -116,9 +109,6 @@ std::tuple<CImg < float >,CImg < float >> calculate_u_v (Eigen::SparseMatrix<flo
     CImg <float> u(width,height);
     CImg <float> v(width,height);
 
-    #pragma omp parallel for simd  \
-            collapse(2)\
-            schedule(simd:static)
     for (int i=0 ; i != u.height(); ++i){
         for(int j=0 ; j != u.width(); ++j){
             u(j,i)=x.coeff(i*u.width()+j,0);
@@ -139,14 +129,6 @@ int main(int argc, char* argv[]){
     CImg < float > in_image1(argv[1]);
     CImg < float > in_image2(argv[2]);
     std::cout << "Step 1 : Read Images" << std::endl;
-
-    /*
-    for (int i=0 ; i != in_image1.height(); ++i){
-        for(int j=0 ; j != in_image1.width(); ++j){
-            std::cout << "pixel value: "<<in_image1(j,i) << std::endl;
-        }
-    }
-    */
 
     //stacking two images to a single 3d object
     CImg <float> img_3d(in_image1.width(),in_image1.height(),2);
