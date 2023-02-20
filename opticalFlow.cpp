@@ -51,7 +51,6 @@ std::tuple<Eigen::SparseMatrix<float>,Eigen::SparseMatrix<float>> fill_A_b(CImg 
 
     for (int i=0; i!=Ix.height() ;++i){
         for (int j=0; j!=Ix.width() ;++j){
-            //TODO CHECK WHETHER MATRIX IS FILLED CORRECTLY
             //first equation
             matA.coeffRef(count_a,i*width+j)=Ix(j,i)*Ix(j,i)+4*a;
 
@@ -180,7 +179,6 @@ int main(int argc, char* argv[]){
     auto [u,v]=calculate_u_v(x,in_image1.height(),in_image1.width());
 
     // Normalize the flow field so that the largest vector (ui, vi) has magnitude 1
-    // version 1
     double max_magnitude = 0.0;
     for (int y = 0; y < u.height(); ++y){
         for (int x = 0; x < u.width(); ++x){
@@ -191,20 +189,8 @@ int main(int argc, char* argv[]){
     u = u / max_magnitude;
     v = v / max_magnitude;
     
-
-    //clamp and quantize
-    //original version
-    /*
-    for (int i=0 ; i != u.height(); ++i){
-        for(int j=0 ; j != u.width(); ++j){
-            u(j,i)=std::max<unsigned char>(std::min<unsigned char>(255*(0.5*(u(j,i)+1)), 255), 0);
-            v(j,i)=std::max<unsigned char>(std::min<unsigned char>(255*(0.5*(v(j,i)+1)), 255), 0);
-        }
-    }
-    */
     
-    
-    // clamp and quantize version 2 
+    // clamp and quantize 
     for (int i=0 ; i != u.height(); ++i){
         for(int j=0 ; j != u.width(); ++j){
             u(j,i)=std::clamp<unsigned char>((255 * (0.5*(u(j,i)  + 1))), 0, 255);
