@@ -10,7 +10,7 @@ Optical flow has applications in:
 - Autonomous driving
 - Robotics
 
-![Project Demo](Opticfloweg.webp)
+![Project Demo](Opticfloweg.png)
 
 ## Algorithm Overview
 The Horn-Schunck algorithm focuses on minimizing an energy function which can be described by a set of partial differential equations. A finite difference discretization approach is used for practical computation.
