@@ -31,7 +31,7 @@ The Horn-Schunck algorithm focuses on minimizing an energy function which can be
 
 ### Installation
 1. Clone the repository:
-git clone [repository-url]
+git clone Optical-Flow-Horn-Schunck
 
 2. Ensure the CImg and Eigen libraries are included in your project or install them:
 sudo apt-get install cimg-dev
