@@ -48,13 +48,13 @@ g++ -o optical_flow main.cpp -lX11 -lpthread
 ## Example Output
 Below are examples of optical flow vectors `u` and `v` computed from a given image sequence:
 
-**Image 1:** [Insert Link to Image 1]
+**Image 1:** ![Project Demo](test_images/rect_right_100x100_0.bmp)
 
-**Image 2:** [Insert Link to Image 2]
+**Image 2:** ![Project Demo](test_images/rect_right_100x100_1.bmp)
 
-**Vector Field u:** [Insert Link to Output u]
+**Vector Field u:** ![Project Demo](test_images/rect_right_100x100_ref_u.bmp)
 
-**Vector Field v:** [Insert Link to Output v]
+**Vector Field v:** ![Project Demo](test_images/rect_right_100x100_ref_v.bmp)
 
 ## Contributing
 Contributions to enhance or extend the functionality are welcome. Please fork the repository and submit a pull request.
